@@ -35,11 +35,6 @@ jobs:
         EB_APPLICATION: ${{ secrets.EB_APPLICATION }}
         EB_ENVIRONMENT: ${{ secrets.EB_ENVIRONMENT }}
       run: |
-        # Install EB CLI
         pip install --upgrade awsebcli
-
-        # Initialize EB config (if you haven't done it before, else skip)
-        # eb init $EB_APPLICATION --region $AWS_REGION --platform "Node.js 22"
-
-        # Deploy with EB CLI
+        eb init $EB_APPLICATION --region $AWS_REGION --platform "Node.js 22"
         eb deploy $EB_ENVIRONMENT --staged --verbose
